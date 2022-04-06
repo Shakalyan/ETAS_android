@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegActivity"
+    android:background="@color/menu">
+
+    <Button
+        android:id="@+id/reg_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reg_btn"
+        android:layout_below="@id/dup_new_password"
+        android:layout_marginTop="25sp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/btn"
+        android:layout_marginHorizontal="100sp"/>
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:layout_below="@id/reg_1"
+        android:layout_marginTop="25sp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/btn"
+        android:layout_marginHorizontal="100sp" />
+
+    <TextView
+        android:id="@+id/registr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reg_btn"
+        android:background="@color/btn"
+        android:textAlignment="center"
+        android:layout_marginTop="50sp"
+        android:textSize="60sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/andika_new_basic_bold"/>
+
+    <EditText
+        android:id="@+id/new_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50sp"
+        android:layout_below="@+id/registr"
+        android:layout_marginTop="50sp"
+        android:background="@color/btn"
+        android:ems="10"
+        android:hint="@string/user"
+        android:inputType="textPersonName"
+        android:minHeight="48sp"
+        android:textColorHint="@color/black"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/new_user_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_user_name"
+        android:layout_marginHorizontal="50sp"
+        android:layout_marginTop="25sp"
+        android:autofillHints=""
+        android:background="@color/btn"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:minHeight="48sp"
+        android:textColorHint="@color/black" />
+
+    <EditText
+        android:id="@+id/dup_new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/new_user_password"
+        android:layout_marginHorizontal="50sp"
+        android:layout_marginTop="25sp"
+        android:autofillHints=""
+        android:background="@color/btn"
+        android:ems="10"
+        android:hint="@string/dup_password"
+        android:inputType="textPassword"
+        android:minHeight="48sp"
+        android:textColorHint="@color/black" />
+</RelativeLayout>

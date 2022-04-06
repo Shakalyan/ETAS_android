@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ETAS</string>
+    <string name="user">Введите логин</string>
+    <string name="password">Введите пароль</string>
+    <string name="join_btn">Войти</string>
+    <string name="reg_btn">Регистрация</string>
+    <string name="user_no_input">Введите данные</string>
+    <string name="dup_password">Повторите пароль</string>
+    <string name="back">Назад</string>
+    <string name="words">Словарь</string>
+    <string name="tests">Тесты</string>
+    <string name="settings">Настройки</string>
+    <string name="title_activity_user">UserActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>

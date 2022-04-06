@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_words"
+        android:icon="@drawable/ic_words_24"
+        android:title="@string/words"
+        android:enabled="true"/>
+
+    <item
+        android:id="@+id/navigation_test"
+        android:icon="@drawable/ic_test_24"
+        android:title="@string/tests"
+        android:enabled="true"/>
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ic_settings_24"
+        android:title="@string/settings"
+        android:enabled="true"/>
+
+</menu>
