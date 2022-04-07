@@ -10,10 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".UserActivity"
-            android:exported="false"
-            android:label="@string/title_activity_user" />
-        <activity
             android:name=".RegActivity"
             android:exported="false" />
         <activity
