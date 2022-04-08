@@ -19,7 +19,7 @@
         android:layout_marginHorizontal="100sp"/>
 
     <Button
-        android:id="@+id/back"
+        android:id="@+id/back_reg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/back"

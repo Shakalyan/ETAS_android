@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 else if (user_name.getText().toString().equals("admin") &&
                         user_password.getText().toString().equals("admin")){
-                    Intent intent = new Intent(MainActivity.this, UsersActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
                 }
             }

@@ -8,7 +8,7 @@
 
 
     <Button
-        android:id="@+id/word"
+        android:id="@+id/words_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150sp"
@@ -18,10 +18,10 @@
         android:text="@string/words" />
 
     <Button
-        android:id="@+id/tests"
+        android:id="@+id/tests_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/word"
+        android:layout_below="@+id/words_id"
         android:layout_marginTop="25sp"
         android:layout_marginHorizontal="50sp"
         android:backgroundTint="@color/btn"
@@ -29,14 +29,24 @@
         android:text="@string/tests" />
 
     <Button
-        android:id="@+id/settings"
+        android:id="@+id/settings_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25sp"
         android:layout_marginHorizontal="50sp"
         android:backgroundTint="@color/btn"
         android:textColor="@color/black"
-        android:layout_below="@+id/tests"
+        android:layout_below="@+id/translated_id"
         android:text="@string/settings" />
-</RelativeLayout>
 
+    <Button
+        android:id="@+id/translated_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25sp"
+        android:layout_marginHorizontal="50sp"
+        android:backgroundTint="@color/btn"
+        android:textColor="@color/black"
+        android:layout_below="@+id/tests_id"
+        android:text="@string/translated" />
+</RelativeLayout>

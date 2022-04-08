@@ -11,7 +11,7 @@ import android.widget.EditText;
 public class RegActivity extends AppCompatActivity {
 
     private Button reg_1;
-    private Button back;
+    private Button back_reg;
     private EditText new_user_name;
     private EditText new_user_password;
     private EditText dup_user_password;
@@ -21,13 +21,13 @@ public class RegActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
 
-        back = findViewById(R.id.back);
+        back_reg = findViewById(R.id.back_reg);
 
-        back.setOnClickListener(new View.OnClickListener() {
+        back_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RegActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
         });
