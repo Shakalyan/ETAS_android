@@ -11,12 +11,12 @@
         android:id="@+id/reg_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/reg_btn"
         android:layout_below="@id/dup_new_password"
+        android:layout_marginHorizontal="100sp"
         android:layout_marginTop="25sp"
-        android:textColor="@color/black"
         android:backgroundTint="@color/btn"
-        android:layout_marginHorizontal="100sp"/>
+        android:text="@string/reg_btn"
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/back_reg"
