@@ -7,24 +7,20 @@
 
     <fragment
         android:id="@+id/nav_words"
-        android:name="com.example.myapplication.ui.home.HomeFragment"
+        android:name="com.example.myapplication.ui.words.WordsFragment"
         android:label="@string/words"
         tools:layout="@layout/fragment_words" />
 
     <fragment
         android:id="@+id/nav_tests"
-        android:name="com.example.myapplication.ui.gallery.GalleryFragment"
+        android:name="com.example.myapplication.ui.tests.TestsFragment"
         android:label="@string/tests"
         tools:layout="@layout/fragment_tests" />
 
     <fragment
         android:id="@+id/nav_translated"
-        android:name="com.example.myapplication.ui.slideshow.SlideshowFragment"
+        android:name="com.example.myapplication.ui.translated.TranslatedFragment"
         android:label="@string/translated"
         tools:layout="@layout/fragment_translated" />
-    <fragment
-        android:id="@+id/nav_settings"
-        android:name="com.example.myapplication.BlankFragment"
-        android:label="@string/settings"
-        tools:layout="@layout/fragment_settings" />
+
 </navigation>

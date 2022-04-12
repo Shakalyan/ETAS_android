@@ -1,16 +1,16 @@
-package com.example.myapplication.ui.home;
+package com.example.myapplication.ui.translated;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class TranslatedViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public TranslatedViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is slideshow fragment");
     }
 
     public LiveData<String> getText() {

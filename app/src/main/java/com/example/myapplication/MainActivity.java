@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                Intent intent = new Intent(MainActivity.this, UsersActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RegActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
