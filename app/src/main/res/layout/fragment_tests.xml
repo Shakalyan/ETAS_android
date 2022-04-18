@@ -6,12 +6,113 @@
     android:layout_height="match_parent"
     tools:context=".ui.tests.TestsFragment">
 
-    <TextView
-        android:id="@+id/hello_tests"
-        android:layout_width="match_parent"
+    <ViewFlipper
+        android:id="@+id/testsFlipper"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tests"
-        android:textSize="100sp"
-        android:textColor="@color/btn"
-        android:layout_marginTop="200sp"/>
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:divider="@drawable/tests_start_divider">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Параметры"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+
+            <Spinner
+                android:id="@+id/tests_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Вид теста"
+                android:textAlignment="textStart"
+                android:minHeight="48dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="18dp"
+                    android:text="Количество слов" />
+
+                <EditText
+                    android:id="@+id/editTextNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="2"
+                    android:hint="max:"
+                    android:height="48dp"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Начать" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/wordField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:width="300dp"
+                android:height="60dp" />
+
+            <Button
+                android:id="@+id/variant1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Вариант 1" />
+
+            <Button
+                android:id="@+id/variant2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Вариант 2" />
+
+            <Button
+                android:id="@+id/variant3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Вариант 3" />
+
+            <Button
+                android:id="@+id/variant4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Вариант 4" />
+
+
+        </LinearLayout>
+
+
+
+    </ViewFlipper>
+
 </RelativeLayout>

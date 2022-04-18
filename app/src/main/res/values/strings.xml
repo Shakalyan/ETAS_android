@@ -25,4 +25,10 @@
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="tests_names">
+        <item>Выбор ответа</item>
+        <item>Ручной ввод</item>
+    </string-array>
+
 </resources>
