@@ -8,12 +8,12 @@
 
     <ViewFlipper
         android:id="@+id/testsFlipper"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
 
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
@@ -50,7 +50,7 @@
                     android:text="Количество слов" />
 
                 <EditText
-                    android:id="@+id/editTextNumber"
+                    android:id="@+id/wordsCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -62,6 +62,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/startButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Начать" />
@@ -111,7 +112,42 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textSize="20dp"
+                android:textAlignment="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/editTextTextPersonName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="Перевод" />
+
+                <Button
+                    android:id="@+id/submitTranslationBtn"
+                    android:layout_width="wrap_content"
+                    android:minWidth="5dp"
+                    android:layout_height="match_parent"
+                    android:drawableBottom="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </ViewFlipper>
 

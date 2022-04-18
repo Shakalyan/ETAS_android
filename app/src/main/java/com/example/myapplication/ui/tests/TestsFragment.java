@@ -28,6 +28,7 @@ public class TestsFragment extends Fragment {
 
     private ViewFlipper testsFlipper;
     private Spinner testsSpinner;
+    private Button startButton;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -40,12 +41,18 @@ public class TestsFragment extends Fragment {
 
         testsFlipper = root.findViewById(R.id.testsFlipper);
         testsSpinner = root.findViewById(R.id.tests_spinner);
+        startButton = root.findViewById(R.id.startButton);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(), R.array.tests_names, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         testsSpinner.setAdapter(adapter);
 
-
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                testsFlipper.setDisplayedChild((int)testsSpinner.getSelectedItemId() + 1);
+            }
+        });
 
         return root;
     }
