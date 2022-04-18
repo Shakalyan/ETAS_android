@@ -29,7 +29,7 @@ public class TranslatedFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        TranslatedViewModel wordsViewModel =
+        TranslatedViewModel translatedViewModel =
                 new ViewModelProvider(this).get(TranslatedViewModel.class);
 
         binding = FragmentTranslatedBinding.inflate(inflater, container, false);

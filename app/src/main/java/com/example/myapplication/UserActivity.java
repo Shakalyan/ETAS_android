@@ -29,7 +29,7 @@ public class UserActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarUser.toolbar);
-        binding.appBarUser.fab.setOnClickListener(new View.OnClickListener() {
+        binding.appBarUser.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
