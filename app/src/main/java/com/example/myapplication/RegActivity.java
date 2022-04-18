@@ -55,15 +55,11 @@ public class RegActivity extends AppCompatActivity {
                 Response response = AccountService.retrieveResponse();
 
                 if(response.getStatusCode() != 200) {
-                    Toast.makeText(RegActivity.this, "Error: " + response.getData(),
+                    Toast.makeText(RegActivity.this, response.getData(),
                             Toast.LENGTH_LONG).show();
                     return;
                 }
-                else if(response.getData().equals("false")) {
-                    Toast.makeText(RegActivity.this, "User with same login already exists",
-                            Toast.LENGTH_LONG).show();
-                    return;
-                }
+
                 Toast.makeText(RegActivity.this, "Registration successfully complete",
                         Toast.LENGTH_LONG).show();
                 

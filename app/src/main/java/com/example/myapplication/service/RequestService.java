@@ -34,6 +34,12 @@ public class RequestService {
         return getResponse(connection);
     }
 
+    public static Response sendPost(String path, Map<String, String> params) throws IOException {
+        HttpURLConnection connection = getConnection(buildURL(path, params));
+        connection.setRequestMethod("POST");
+        return getResponse(connection);
+    }
+
     private static String buildURL(String path, Map<String, String> params) {
         StringBuilder urlSb = new StringBuilder(DOMAIN + path);
         urlSb.append('?');
@@ -61,7 +67,10 @@ public class RequestService {
             response.append(inputLine);
         }
         connection.disconnect();
-        return new Response(status, response.toString());
+        if (status != 200)
+            return new Response(status, response.toString());
+        else
+            return new Gson().fromJson(response.toString(), Response.class);
     }
 
 }

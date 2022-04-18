@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
         user_name = findViewById(R.id.user_name);
         user_password = findViewById(R.id.user_password);
 
-
-
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,12 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 Response response = AccountService.retrieveResponse();
 
                 if(response.getStatusCode() != 200) {
-                    Toast.makeText(MainActivity.this, "Error: " + response.getData(),
-                            Toast.LENGTH_LONG).show();
-                    return;
-                }
-                else if(response.getData().equals("false")) {
-                    Toast.makeText(MainActivity.this, "Incorrect login or password",
+                    Toast.makeText(MainActivity.this, response.getData(),
                             Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -58,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
