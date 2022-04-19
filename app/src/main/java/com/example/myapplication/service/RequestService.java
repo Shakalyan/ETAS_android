@@ -2,7 +2,9 @@ package com.example.myapplication.service;
 
 import android.util.Pair;
 
+import com.example.myapplication.model.Request;
 import com.example.myapplication.model.Response;
+import com.example.myapplication.model.User;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -24,8 +26,8 @@ public class RequestService {
         return getResponse(connection);
     }
 
-    public static Response sendPostJSON(String path, Map<String, String> params, Object object) throws IOException {
-        String json = new Gson().toJson(object);
+    public static Response sendPostJSON(String path, Map<String, String> params, User user, Object object ) throws IOException {
+        String json = new Gson().toJson(new Request<Object>(user, object));
         HttpURLConnection connection = getConnection(buildURL(path, params));
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/json");

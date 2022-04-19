@@ -20,7 +20,7 @@ public class AccountService extends APIService{
                 Response resp = new Response();
 
                 try {
-                    resp = RequestService.sendPostJSON("/login/", params, user);
+                    resp = RequestService.sendPostJSON("/login/", params, user, null);
                 } catch(IOException e) {
                     resp.setStatusCode(-1);
                     resp.setData(e.getMessage());
@@ -45,7 +45,7 @@ public class AccountService extends APIService{
                 Response response = new Response();
                 HashMap<String, String> params = new HashMap<>();
                 try {
-                    response = RequestService.sendPostJSON("/registration/", params, user);
+                    response = RequestService.sendPostJSON("/registration/", params, user, null);
                 } catch(IOException e) {
                     response.setStatusCode(-1);
                     response.setData(e.getMessage());
