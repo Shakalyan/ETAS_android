@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:text="@string/create"
         android:layout_below="@+id/words_spinner"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="47dp"
         android:backgroundTint="@color/btn"/>
 
     <Button
@@ -43,8 +43,7 @@
         android:layout_height="wrap_content"
         android:text="@string/delete"
         android:layout_below="@+id/words_spinner"
-        android:layout_toEndOf="@+id/btn_create"
-        android:layout_marginStart="100dp"
+        android:layout_toEndOf="@+id/btn_choice"
         android:backgroundTint="@color/btn"/>
 
     <Button
@@ -52,10 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/choice"
-        android:layout_toEndOf="@+id/editTextTextPersonName"
-        android:layout_below="@+id/btn_create"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="0dp"
+        android:layout_below="@+id/words_spinner"
+        android:layout_toEndOf="@+id/btn_create"
         android:backgroundTint="@color/btn"/>
 
     <Spinner
