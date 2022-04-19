@@ -9,8 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myapplication.data.CurrentUserData;
 import com.example.myapplication.model.Response;
+import com.example.myapplication.model.User;
 import com.example.myapplication.service.AccountService;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                     return;
                 }
+
+                User user = new Gson().fromJson(response.getData(), User.class);
+                CurrentUserData.setUser(user);
 
                 Intent intent = new Intent(MainActivity.this, UserActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

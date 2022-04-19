@@ -1,11 +1,16 @@
 package com.example.myapplication.model;
 
+import java.util.Set;
+
 public class User {
 
     private Long id;
     private String login;
     private String password;
+    private Set<Dictionary> dictionaries;
 
+    public User() {
+    }
 
     public User(String login, String password) {
         this.login = login;
@@ -35,5 +40,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Dictionary> getDictionaries() {
+        return dictionaries;
+    }
+
+    public void setDictionaries(Set<Dictionary> dictionaries) {
+        this.dictionaries = dictionaries;
     }
 }
