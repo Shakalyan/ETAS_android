@@ -13,14 +13,15 @@
         android:text="@string/view_words"
         android:layout_below="@+id/editTextTextPersonName"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/btn"/>
 
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_create"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="25dp"
         android:ems="10"
         android:hint="@string/name"
@@ -33,7 +34,8 @@
         android:layout_height="wrap_content"
         android:text="@string/create"
         android:layout_below="@+id/words_spinner"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginStart="50dp"
+        android:backgroundTint="@color/btn"/>
 
     <Button
         android:id="@+id/btn_delete"
@@ -42,7 +44,8 @@
         android:text="@string/delete"
         android:layout_below="@+id/words_spinner"
         android:layout_toEndOf="@+id/btn_create"
-        android:layout_marginStart="100dp"/>
+        android:layout_marginStart="100dp"
+        android:backgroundTint="@color/btn"/>
 
     <Button
         android:id="@+id/btn_choice"
@@ -52,7 +55,8 @@
         android:layout_toEndOf="@+id/editTextTextPersonName"
         android:layout_below="@+id/btn_create"
         android:layout_marginTop="25dp"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginStart="0dp"
+        android:backgroundTint="@color/btn"/>
 
     <Spinner
         android:id="@+id/words_spinner"
