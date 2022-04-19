@@ -21,12 +21,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_create"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="25dp"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
         android:minHeight="48dp" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:layout_below="@+id/btn_create"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/editTextTextPersonName"
+        android:backgroundTint="@color/btn"/>
 
     <Button
         android:id="@+id/btn_create"
