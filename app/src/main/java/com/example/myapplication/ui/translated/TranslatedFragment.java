@@ -18,6 +18,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.UserActivity;
 import com.example.myapplication.databinding.FragmentTranslatedBinding;
 import com.example.myapplication.model.Response;
+import com.example.myapplication.model.User;
 import com.example.myapplication.service.TranslationService;
 
 public class TranslatedFragment extends Fragment {
@@ -43,7 +44,7 @@ public class TranslatedFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String sentence = input_text.getText().toString();
-                TranslationService.translate(sentence, "ru", "en");
+                TranslationService.translate(new User("asd", "asd"), sentence, "ru", "en");
                 while(!TranslationService.responseIsPresent()) {
                 }
 
