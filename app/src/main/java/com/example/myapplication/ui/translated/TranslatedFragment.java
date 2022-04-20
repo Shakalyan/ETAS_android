@@ -66,7 +66,7 @@ public class TranslatedFragment extends Fragment {
                 String slValue = translated_text.getText().toString();
                 Translation translation = new Translation(flValue, slValue);
 
-                if(TranslationService.addTranslation(CurrentUserData.getUser(),
+                if(!TranslationService.addTranslation(CurrentUserData.getUser(),
                                                 translation,
                                                 CurrentUserData.getCurrentDictionary().getId())) {
                     Toast.makeText(getContext(), "Empty input or output", Toast.LENGTH_LONG).show();

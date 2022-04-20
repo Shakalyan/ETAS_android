@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -39,7 +40,7 @@ public class WordsFragment extends Fragment {
     private Button createButton;
     private Button deleteButton;
     private Button chooseButton;
-    private Button showWordsButton;
+    private TextView currentDictionaryTW;
     private LinearLayout wordsList;
     private EditText etDictionaryName;
     private Spinner dictionariesSpinner;
@@ -55,7 +56,7 @@ public class WordsFragment extends Fragment {
         createButton = root.findViewById(R.id.btn_create);
         deleteButton = root.findViewById(R.id.btn_delete);
         chooseButton = root.findViewById(R.id.btn_choice);
-        showWordsButton = root.findViewById(R.id.btn_show_words);
+        currentDictionaryTW = root.findViewById(R.id.current_dict_tw);
         wordsList = root.findViewById(R.id.words_list);
         etDictionaryName = root.findViewById(R.id.et_dictionaryName);
         dictionariesSpinner = root.findViewById(R.id.dictioinaries_spinner);
@@ -121,18 +122,6 @@ public class WordsFragment extends Fragment {
             }
         });
 
-        showWordsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentDictionaryIsNull())
-                    return;
-
-                Translation t = new Translation("cat", "кот");
-                CurrentUserData.getCurrentDictionary().getTranslations().add(t);
-                updateWordsList();
-            }
-        });
-
         dictionariesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -164,11 +153,11 @@ public class WordsFragment extends Fragment {
         return dl.get(index);
     }
 
-    public void updateShowWordsButtonText() {
+    private void updateShowWordsButtonText() {
         if(currentDictionaryIsNull())
             return;
-        String text = "Current Dict: " + CurrentUserData.getCurrentDictionary().getName();
-        showWordsButton.setText(text);
+        String text = "Текущий словарь: " + CurrentUserData.getCurrentDictionary().getName();
+        currentDictionaryTW.setText(text);
     }
 
     private boolean currentDictionaryIsNull() {
@@ -187,7 +176,7 @@ public class WordsFragment extends Fragment {
         return false;
     }
 
-    public void updateWordsList() {
+    private void updateWordsList() {
         Dictionary selectedDictionary = getSelectedDictionary();
         if(selectedDictionary == null)
             return;
@@ -196,15 +185,15 @@ public class WordsFragment extends Fragment {
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int textSize = 20;
         for(Translation t : selectedDictionary.getTranslations()) {
-            TextView tw = new TextView(getContext());
-            tw.setText(String.format("%s - %s", t.getFlValue(), t.getSlValue()));
-            tw.setLayoutParams(lp);
-            tw.setTextSize(textSize);
-            wordsList.addView(tw);
+            CheckBox cb = new CheckBox(getContext());
+            cb.setText(String.format("%s - %s", t.getFlValue(), t.getSlValue()));
+            cb.setLayoutParams(lp);
+            cb.setTextSize(textSize);
+            wordsList.addView(cb);
         }
     }
 
-    public void updateSpinner() {
+    private void updateSpinner() {
         ArrayList<String> dictsNames = new ArrayList<>();
         for(Dictionary d : CurrentUserData.getUser().getDictionaries())
             dictsNames.add(d.getName());

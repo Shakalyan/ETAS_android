@@ -33,7 +33,7 @@
     <string name="input_word">Введите слово</string>
     <string name="menu_home">Home</string>
     <string name="name">Название</string>
-    <string name="view_words">Показать слова</string>
+    <string name="view_words">Текущий словарь: </string>
     <string name="choice">Выбрать</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>

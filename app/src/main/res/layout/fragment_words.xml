@@ -6,37 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".ui.words.WordsFragment">
 
-    <Button
-        android:id="@+id/btn_show_words"
+    <TextView
+        android:id="@+id/current_dict_tw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/view_words"
-        android:layout_below="@+id/et_dictionaryName"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/btn"/>
-
-    <EditText
-        android:id="@+id/et_dictionaryName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_create"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:layout_below="@+id/options_layout"
+        android:layout_marginHorizontal="38dp"
+        android:layout_marginTop="5dp"
+        android:text="Текущий словарь: "
+        android:textSize="20sp" />
 
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_delete_words"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/save"
-        android:layout_below="@+id/btn_create"
-        android:layout_marginTop="25dp"
-        android:layout_toEndOf="@+id/et_dictionaryName"
-        android:backgroundTint="@color/btn"/>
+        android:layout_below="@id/current_dict_tw"
+        android:layout_marginLeft="38dp"
+        android:text="Удалить Слово"
+        android:backgroundTint="@color/btn"
+        android:layout_marginTop="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/options_layout"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="38dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_choice">
+
+        <EditText
+            android:id="@+id/et_dictionaryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_create"
+            android:ems="10"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:backgroundTint="@color/btn"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_create"
@@ -44,13 +58,14 @@
         android:layout_height="wrap_content"
         android:text="@string/create"
         android:layout_below="@+id/dictioinaries_spinner"
-        android:layout_marginStart="47dp"
+        android:layout_marginStart="38dp"
         android:backgroundTint="@color/btn"/>
 
     <Button
         android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
         android:text="@string/delete"
         android:layout_below="@+id/dictioinaries_spinner"
         android:layout_toEndOf="@+id/btn_choice"
@@ -60,6 +75,7 @@
         android:id="@+id/btn_choice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
         android:text="@string/choice"
         android:layout_below="@+id/dictioinaries_spinner"
         android:layout_toEndOf="@+id/btn_create"
@@ -69,6 +85,7 @@
         android:id="@+id/dictioinaries_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="38dp"
         android:layout_marginTop="25dp"
         android:contentDescription="@string/words"
         android:minHeight="48dp"
@@ -78,14 +95,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginBottom="20dp"
-        android:layout_below="@+id/btn_show_words"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/btn_delete_words"
         android:layout_centerHorizontal="true" >
 
         <LinearLayout
             android:id="@+id/words_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+        </LinearLayout>
     </ScrollView>
+
+
+
+
 </RelativeLayout>
