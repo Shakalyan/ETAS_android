@@ -47,9 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_below="@+id/input_translated"
-        android:layout_marginStart="24sp"
+        android:layout_marginStart="275dp"
         android:layout_marginTop="8sp"
-        android:layout_toEndOf="@+id/btn_translated"
         android:backgroundTint="@color/btn"
         android:drawableTop="@drawable/ic_baseline_autorenew_24"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
