@@ -24,15 +24,15 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Параметры"
-                android:textSize="20dp"
+                android:text="@string/settings"
+                android:textSize="20sp"
                 android:textAlignment="center"/>
 
             <Spinner
                 android:id="@+id/tests_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="Вид теста"
+                android:contentDescription="@string/view_text"
                 android:textAlignment="textStart"
                 android:minHeight="48dp" />
 
@@ -46,8 +46,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="18dp"
-                    android:text="Количество слов" />
+                    android:textSize="18sp"
+                    android:text="@string/count_words" />
 
                 <EditText
                     android:id="@+id/wordsCount"
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="2"
-                    android:hint="max:"
+                    android:hint="@string/max"
                     android:height="48dp"
                     android:inputType="number" />
 
@@ -65,7 +65,7 @@
                 android:id="@+id/startButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Начать" />
+                android:text="@string/begin" />
 
         </LinearLayout>
 
@@ -79,8 +79,7 @@
                 android:id="@+id/wordField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textAlignment="center"
                 android:width="300dp"
                 android:height="60dp" />
@@ -89,25 +88,25 @@
                 android:id="@+id/variant1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Вариант 1" />
+                android:text="@string/option_1" />
 
             <Button
                 android:id="@+id/variant2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Вариант 2" />
+                android:text="@string/option_2" />
 
             <Button
                 android:id="@+id/variant3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Вариант 3" />
+                android:text="@string/option_3" />
 
             <Button
                 android:id="@+id/variant4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Вариант 4" />
+                android:text="@string/option_4" />
 
 
         </LinearLayout>
@@ -120,10 +119,9 @@
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="TextView"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textAlignment="center" />
 
             <LinearLayout
@@ -131,12 +129,12 @@
                 android:layout_height="wrap_content">
                 <EditText
                     android:id="@+id/editTextTextPersonName2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:hint="Перевод" />
+                    android:hint="@string/translate" />
 
                 <Button
                     android:id="@+id/submitTranslationBtn"
