@@ -13,7 +13,7 @@
         android:layout_below="@+id/options_layout"
         android:layout_marginHorizontal="38dp"
         android:layout_marginTop="5dp"
-        android:text="Текущий словарь: "
+        android:text="@string/current_dictionary"
         android:textSize="20sp" />
 
     <Button
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/current_dict_tw"
         android:layout_marginLeft="38dp"
-        android:text="Удалить Слово"
+        android:text="@string/delete_word"
         android:backgroundTint="@color/btn"
         android:layout_marginTop="5dp"/>
 
@@ -37,7 +37,6 @@
             android:id="@+id/et_dictionaryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_create"
             android:ems="10"
             android:hint="@string/name"
             android:inputType="textPersonName"
@@ -65,7 +64,7 @@
         android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="9dp"
+        android:layout_marginStart="9dp"
         android:text="@string/delete"
         android:layout_below="@+id/dictioinaries_spinner"
         android:layout_toEndOf="@+id/btn_choice"
@@ -75,7 +74,7 @@
         android:id="@+id/btn_choice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="9dp"
+        android:layout_marginStart="9dp"
         android:text="@string/choice"
         android:layout_below="@+id/dictioinaries_spinner"
         android:layout_toEndOf="@+id/btn_create"
