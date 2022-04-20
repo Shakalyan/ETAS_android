@@ -20,25 +20,19 @@ public class RequestService {
 
     private final static String DOMAIN = "https://etas-s.herokuapp.com";
 
-    public static Response sendGet(String path, Map<String, String> params) throws IOException {
-        HttpURLConnection connection = getConnection(buildURL(path, params));
-        connection.setRequestMethod("GET");
-        return getResponse(connection);
-    }
-
-    public static Response sendPostJSON(String path, Map<String, String> params, User user, Object object ) throws IOException {
+    public static Response sendJSON(String path, String method, Map<String, String> params, User user, Object object ) throws IOException {
         String json = new Gson().toJson(new Request<Object>(user, object));
         HttpURLConnection connection = getConnection(buildURL(path, params));
-        connection.setRequestMethod("POST");
+        connection.setRequestMethod(method);
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setDoOutput(true);
         connection.getOutputStream().write(json.getBytes(StandardCharsets.UTF_8));
         return getResponse(connection);
     }
 
-    public static Response sendPost(String path, Map<String, String> params) throws IOException {
+    public static Response send(String path, String method, Map<String, String> params) throws IOException {
         HttpURLConnection connection = getConnection(buildURL(path, params));
-        connection.setRequestMethod("POST");
+        connection.setRequestMethod(method);
         return getResponse(connection);
     }
 

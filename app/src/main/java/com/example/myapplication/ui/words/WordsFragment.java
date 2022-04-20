@@ -4,13 +4,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.R;
+import com.example.myapplication.data.CurrentUserData;
 import com.example.myapplication.databinding.FragmentWordsBinding;
-import com.example.myapplication.ui.words.WordsViewModel;
+import com.example.myapplication.model.Dictionary;
+import com.example.myapplication.model.Response;
+import com.example.myapplication.model.Translation;
+import com.example.myapplication.service.DictionaryService;
+
+import java.util.ArrayList;
 
 public class WordsFragment extends Fragment {
 
@@ -20,7 +36,13 @@ public class WordsFragment extends Fragment {
 
     private FragmentWordsBinding binding;
 
-
+    private Button createButton;
+    private Button deleteButton;
+    private Button chooseButton;
+    private Button showWordsButton;
+    private LinearLayout wordsList;
+    private EditText etDictionaryName;
+    private Spinner dictionariesSpinner;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,7 +52,165 @@ public class WordsFragment extends Fragment {
         binding = FragmentWordsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        createButton = root.findViewById(R.id.btn_create);
+        deleteButton = root.findViewById(R.id.btn_delete);
+        chooseButton = root.findViewById(R.id.btn_choice);
+        showWordsButton = root.findViewById(R.id.btn_show_words);
+        wordsList = root.findViewById(R.id.words_list);
+        etDictionaryName = root.findViewById(R.id.et_dictionaryName);
+        dictionariesSpinner = root.findViewById(R.id.dictioinaries_spinner);
+
+        createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = etDictionaryName.getText().toString();
+                Dictionary dictionary = new Dictionary(name);
+                if(!DictionaryService.createDictionary(CurrentUserData.getUser(), dictionary)) {
+                    Toast.makeText(getContext(), "Incorrect dictionary name",
+                            Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                while(!DictionaryService.responseIsPresent()) {
+
+                }
+
+                Response response = DictionaryService.retrieveResponse();
+                Toast.makeText(getContext(), response.getData(), Toast.LENGTH_LONG).show();
+                if(response.getStatusCode() != 200)
+                    return;
+
+                CurrentUserData.getUser().getDictionaries().add(dictionary);
+                updateSpinner();
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(currentDictionaryIsNull())
+                    return;
+
+                Dictionary dictionary = CurrentUserData.getCurrentDictionary();
+
+                DictionaryService.deleteDictionary(CurrentUserData.getUser(), dictionary);
+                while(!DictionaryService.responseIsPresent()) {
+
+                }
+                Response response = DictionaryService.retrieveResponse();
+                Toast.makeText(getContext(), response.getData(), Toast.LENGTH_LONG).show();
+                if(response.getStatusCode() != 200) {
+                    return;
+                }
+
+                CurrentUserData.getUser().getDictionaries().remove(dictionary);
+                updateSpinner();
+                updateShowWordsButtonText();
+            }
+        });
+
+        chooseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(selectedDictionaryIsNull())
+                    return;
+                Dictionary dictionary = getSelectedDictionary();
+                CurrentUserData.setCurrentDictionary(dictionary);
+                Toast.makeText(getContext(), String.format("Current dictionary is %s", dictionary.getName()), Toast.LENGTH_LONG).show();
+                updateShowWordsButtonText();
+            }
+        });
+
+        showWordsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(currentDictionaryIsNull())
+                    return;
+
+                Translation t = new Translation("cat", "кот");
+                CurrentUserData.getCurrentDictionary().getTranslations().add(t);
+                updateWordsList();
+            }
+        });
+
+        dictionariesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                updateWordsList();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateSpinner();
+        updateWordsList();
+        updateShowWordsButtonText();
+    }
+
+    private Dictionary getSelectedDictionary() {
+        int index = (int)dictionariesSpinner.getSelectedItemId();
+        ArrayList<Dictionary> dl = new ArrayList<Dictionary>(CurrentUserData.getUser().getDictionaries());
+        if(dl.size() <= index)
+            return null;
+        return dl.get(index);
+    }
+
+    public void updateShowWordsButtonText() {
+        if(currentDictionaryIsNull())
+            return;
+        String text = "Current Dict: " + CurrentUserData.getCurrentDictionary().getName();
+        showWordsButton.setText(text);
+    }
+
+    private boolean currentDictionaryIsNull() {
+        if(CurrentUserData.getCurrentDictionary() == null) {
+            Toast.makeText(getContext(), String.format("Chosen dictionary is null"), Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean selectedDictionaryIsNull() {
+        if(getSelectedDictionary() == null) {
+            Toast.makeText(getContext(), String.format("Selected dictionary is null"), Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return false;
+    }
+
+    public void updateWordsList() {
+        Dictionary selectedDictionary = getSelectedDictionary();
+        if(selectedDictionary == null)
+            return;
+
+        wordsList.removeAllViews();
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int textSize = 20;
+        for(Translation t : selectedDictionary.getTranslations()) {
+            TextView tw = new TextView(getContext());
+            tw.setText(String.format("%s - %s", t.getFlValue(), t.getSlValue()));
+            tw.setLayoutParams(lp);
+            tw.setTextSize(textSize);
+            wordsList.addView(tw);
+        }
+    }
+
+    public void updateSpinner() {
+        ArrayList<String> dictsNames = new ArrayList<>();
+        for(Dictionary d : CurrentUserData.getUser().getDictionaries())
+            dictsNames.add(d.getName());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, dictsNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dictionariesSpinner.setAdapter(adapter);
     }
 
     @Override

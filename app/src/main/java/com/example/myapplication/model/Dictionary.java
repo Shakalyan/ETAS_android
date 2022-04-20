@@ -1,5 +1,6 @@
 package com.example.myapplication.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Dictionary {
@@ -14,6 +15,7 @@ public class Dictionary {
     public Dictionary(String name) {
         this.name = name;
         this.id = (long)0;
+        this.translations = new HashSet<Translation>();
     }
 
     public Long getId() {

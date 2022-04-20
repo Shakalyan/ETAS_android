@@ -7,17 +7,17 @@
     tools:context=".ui.words.WordsFragment">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_show_words"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/view_words"
-        android:layout_below="@+id/editTextTextPersonName"
+        android:layout_below="@+id/et_dictionaryName"
         android:layout_marginHorizontal="50dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/btn"/>
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/et_dictionaryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_create"
@@ -35,7 +35,7 @@
         android:text="@string/save"
         android:layout_below="@+id/btn_create"
         android:layout_marginTop="25dp"
-        android:layout_toEndOf="@+id/editTextTextPersonName"
+        android:layout_toEndOf="@+id/et_dictionaryName"
         android:backgroundTint="@color/btn"/>
 
     <Button
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/create"
-        android:layout_below="@+id/words_spinner"
+        android:layout_below="@+id/dictioinaries_spinner"
         android:layout_marginStart="47dp"
         android:backgroundTint="@color/btn"/>
 
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/delete"
-        android:layout_below="@+id/words_spinner"
+        android:layout_below="@+id/dictioinaries_spinner"
         android:layout_toEndOf="@+id/btn_choice"
         android:backgroundTint="@color/btn"/>
 
@@ -61,16 +61,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/choice"
-        android:layout_below="@+id/words_spinner"
+        android:layout_below="@+id/dictioinaries_spinner"
         android:layout_toEndOf="@+id/btn_create"
         android:backgroundTint="@color/btn"/>
 
     <Spinner
-        android:id="@+id/words_spinner"
+        android:id="@+id/dictioinaries_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:contentDescription="@string/words"
-        android:textAlignment="textStart"
         android:minHeight="48dp"
-        android:layout_marginTop="25dp"/>
+        android:textAlignment="textStart" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/btn_show_words"
+        android:layout_centerHorizontal="true" >
+
+        <LinearLayout
+            android:id="@+id/words_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 </RelativeLayout>

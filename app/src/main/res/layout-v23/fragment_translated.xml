@@ -12,7 +12,8 @@
         android:layout_height="125sp"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="50sp"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
+        android:gravity="start"
         android:layout_below="@+id/btn_translated"
         android:textSize="20sp"
         android:background="@color/white"
@@ -63,9 +64,11 @@
         android:autofillHints=""
         android:background="@color/btn"
         android:ems="10"
+        android:gravity="start"
         android:hint="@string/input_word"
-        android:textAlignment="center"
         android:inputType="textPersonName"
         android:minHeight="48sp"
+        android:textAlignment="textStart"
+        android:textColor="@color/menu"
         tools:ignore="TextContrastCheck" />
 </RelativeLayout>

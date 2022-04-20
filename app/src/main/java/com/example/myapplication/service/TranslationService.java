@@ -1,6 +1,7 @@
 package com.example.myapplication.service;
 
 import com.example.myapplication.model.Response;
+import com.example.myapplication.model.Translation;
 import com.example.myapplication.model.TranslationRequest;
 import com.example.myapplication.model.User;
 
@@ -14,17 +15,14 @@ public class TranslationService extends APIService {
             @Override
             public void run() {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("sentence", sentenceToTranslate);
-                params.put("source", sourceLan);
-                params.put("target", targetLan);
-
                 Response resp = new Response();
 
                 try {
-                    resp = RequestService.sendPostJSON("/translations/translate/",
-                                                            params,
-                                                            user,
-                                                            new TranslationRequest(sentenceToTranslate, sourceLan, targetLan));
+                    resp = RequestService.sendJSON("/translations/translate/",
+                                            "POST",
+                                                    params,
+                                                    user,
+                                                    new TranslationRequest(sentenceToTranslate, sourceLan, targetLan));
                 } catch(IOException e) {
                     resp.setStatusCode(-1);
                     resp.setData(e.getMessage());
@@ -34,6 +32,35 @@ public class TranslationService extends APIService {
             }
         });
         thread.start();
+    }
+
+    public static boolean addTranslation(User user, Translation translation, Long dictId) {
+        if(translation.getFlValue().isEmpty() || translation.getSlValue().isEmpty())
+            return false;
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HashMap<String, String> params = new HashMap<>();
+                params.put("dict_id", dictId.toString());
+                Response resp = new Response();
+
+                try {
+                    resp = RequestService.sendJSON("/translations/",
+                            "POST",
+                            params,
+                            user,
+                            translation);
+                } catch(IOException e) {
+                    resp.setStatusCode(-1);
+                    resp.setData(e.getMessage());
+                }
+
+                setResponse(resp);
+            }
+        });
+        thread.start();
+        return true;
     }
 
 }

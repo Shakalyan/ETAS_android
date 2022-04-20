@@ -1,13 +1,10 @@
 package com.example.myapplication.service;
 
-import android.util.Log;
-
 import com.example.myapplication.model.Response;
 import com.example.myapplication.model.User;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.concurrent.Callable;
 
 public class AccountService extends APIService{
 
@@ -20,7 +17,7 @@ public class AccountService extends APIService{
                 Response resp = new Response();
 
                 try {
-                    resp = RequestService.sendPostJSON("/login/", params, user, null);
+                    resp = RequestService.sendJSON("/login/", "POST", params, user, null);
                 } catch(IOException e) {
                     resp.setStatusCode(-1);
                     resp.setData(e.getMessage());
@@ -45,7 +42,7 @@ public class AccountService extends APIService{
                 Response response = new Response();
                 HashMap<String, String> params = new HashMap<>();
                 try {
-                    response = RequestService.sendPostJSON("/registration/", params, user, null);
+                    response = RequestService.sendJSON("/registration/", "POST", params, user, null);
                 } catch(IOException e) {
                     response.setStatusCode(-1);
                     response.setData(e.getMessage());
