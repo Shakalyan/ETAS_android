@@ -9,6 +9,7 @@ public class CurrentUserData {
 
     private static User user;
     private static Dictionary currentDictionary;
+    private static boolean translationReversed = false;
 
     public static User getUser() {
         return user;
@@ -26,4 +27,11 @@ public class CurrentUserData {
         CurrentUserData.currentDictionary = currentDictionary;
     }
 
+    public static boolean isTranslationReversed() {
+        return translationReversed;
+    }
+
+    public static void setTranslationReversed(boolean translationReversed) {
+        CurrentUserData.translationReversed = translationReversed;
+    }
 }

@@ -12,7 +12,7 @@
         android:layout_height="125sp"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="25sp"
-        android:layout_below="@+id/language_2"
+        android:layout_below="@+id/tw_target_lan"
         android:textSize="20sp"
         android:background="@color/white"
         android:textColor="@color/menu"
@@ -20,17 +20,17 @@
         android:gravity="start"/>
 
     <TextView
-        android:id="@+id/language_1"
+        android:id="@+id/tw_source_lan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/RU"
-        android:textSize="30sp"
-        android:textColor="@color/black"
+        android:layout_marginStart="50sp"
         android:layout_marginTop="150sp"
-        android:layout_marginStart="50sp"/>
+        android:text="@string/RU"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/language_2"
+        android:id="@+id/tw_target_lan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/EN"
@@ -63,7 +63,7 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/btn_revers"
+        android:id="@+id/btn_reverse"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_below="@+id/input_translated"

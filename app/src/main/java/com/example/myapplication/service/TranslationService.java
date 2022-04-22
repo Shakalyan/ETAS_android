@@ -63,4 +63,33 @@ public class TranslationService extends APIService {
         return true;
     }
 
+    public static boolean deleteTranslations(User user, Translation[] translations, Long dictId) {
+        if(translations.length == 0)
+            return false;
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HashMap<String, String> params = new HashMap<>();
+                params.put("dict_id", dictId.toString());
+                Response resp = new Response();
+
+                try {
+                    resp = RequestService.sendJSON("/translations/",
+                            "DELETE",
+                            params,
+                            user,
+                            translations);
+                } catch(IOException e) {
+                    resp.setStatusCode(-1);
+                    resp.setData(e.getMessage());
+                }
+
+                setResponse(resp);
+            }
+        });
+        thread.start();
+        return true;
+    }
+
 }

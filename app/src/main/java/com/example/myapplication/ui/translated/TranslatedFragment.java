@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.data.CurrentUserData;
 import com.example.myapplication.databinding.FragmentTranslatedBinding;
@@ -26,7 +25,10 @@ public class TranslatedFragment extends Fragment {
 
     private Button btn_translated;
     private Button saveButton;
+    private Button reverseButton;
     private TextView translated_text;
+    private TextView targetLanTw;
+    private TextView sourceLanTw;
     private FragmentTranslatedBinding binding;
     private EditText input_text;
 
@@ -42,12 +44,17 @@ public class TranslatedFragment extends Fragment {
         btn_translated = root.findViewById(R.id.btn_translated);
         translated_text = root.findViewById(R.id.translated_text);
         saveButton = root.findViewById(R.id.btn_save);
+        reverseButton = root.findViewById(R.id.btn_reverse);
+        sourceLanTw = root.findViewById(R.id.tw_source_lan);
+        targetLanTw = root.findViewById(R.id.tw_target_lan);
 
         btn_translated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String sentence = input_text.getText().toString();
-                TranslationService.translate(new User("asd", "asd"), sentence, "ru", "en");
+                String sourceLan = (CurrentUserData.isTranslationReversed())? "en" : "ru";
+                String targetLan = (!CurrentUserData.isTranslationReversed())? "en" : "ru";
+                TranslationService.translate(new User("asd", "asd"), sentence, sourceLan, targetLan);
                 while(!TranslationService.responseIsPresent()) {
                 }
 
@@ -64,7 +71,11 @@ public class TranslatedFragment extends Fragment {
 
                 String flValue = input_text.getText().toString();
                 String slValue = translated_text.getText().toString();
-                Translation translation = new Translation(flValue, slValue);
+                Translation translation;
+                if(CurrentUserData.isTranslationReversed())
+                    translation = new Translation(slValue, flValue);
+                else
+                    translation = new Translation(flValue, slValue);
 
                 if(!TranslationService.addTranslation(CurrentUserData.getUser(),
                                                 translation,
@@ -76,14 +87,40 @@ public class TranslatedFragment extends Fragment {
 
                 }
                 Response response = TranslationService.retrieveResponse();
-                Toast.makeText(getContext(), response.getData(), Toast.LENGTH_LONG).show();
-                if(response.getStatusCode() != 200)
+
+                if(response.getStatusCode() != 200) {
+                    Toast.makeText(getContext(), response.getData(), Toast.LENGTH_LONG).show();
                     return;
+                }
+                else {
+                    translation.setId(Long.parseLong(response.getData()));
+                    Toast.makeText(getContext(), "Successfully saved", Toast.LENGTH_LONG).show();
+                }
+
                 CurrentUserData.getCurrentDictionary().getTranslations().add(translation);
             }
         });
 
+        reverseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CurrentUserData.setTranslationReversed(!CurrentUserData.isTranslationReversed());
+                updateLanguages();
+            }
+        });
+
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        updateLanguages();
+        super.onResume();
+    }
+
+    private void updateLanguages() {
+        sourceLanTw.setText((CurrentUserData.isTranslationReversed())? "EN" : "RU");
+        targetLanTw.setText((!CurrentUserData.isTranslationReversed())? "EN" : "RU");
     }
 
     private boolean currentDictionaryIsNull() {
