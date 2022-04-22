@@ -23,4 +23,10 @@
         android:label="@string/translated"
         tools:layout="@layout/fragment_translated" />
 
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.myapplication.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
+
 </navigation>

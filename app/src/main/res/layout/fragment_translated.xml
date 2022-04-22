@@ -23,11 +23,11 @@
         android:id="@+id/language_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/RU"
-        android:textSize="30sp"
-        android:textColor="@color/black"
+        android:layout_marginStart="50sp"
         android:layout_marginTop="150sp"
-        android:layout_marginStart="50sp"/>
+        android:text="@string/RU"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/language_2"

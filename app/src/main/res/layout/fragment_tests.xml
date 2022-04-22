@@ -83,31 +83,42 @@
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:width="300dp"
-                android:height="60dp" />
+                android:height="60dp"/>
 
             <Button
                 android:id="@+id/variant1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/option_1" />
+                android:text="@string/option_1"
+                android:backgroundTint="@color/btn"/>
 
             <Button
                 android:id="@+id/variant2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/option_2" />
+                android:text="@string/option_2"
+                android:backgroundTint="@color/btn"/>
 
             <Button
                 android:id="@+id/variant3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/option_3" />
+                android:text="@string/option_3"
+                android:backgroundTint="@color/btn"/>
 
             <Button
                 android:id="@+id/variant4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/option_4" />
+                android:text="@string/option_4"
+                android:backgroundTint="@color/btn"/>
+
+            <Button
+                android:id="@+id/exit_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/back"
+                android:backgroundTint="@color/btn"/>
 
 
         </LinearLayout>
@@ -141,6 +152,7 @@
                     android:id="@+id/submitTranslationBtn"
                     android:layout_width="wrap_content"
                     android:minWidth="5dp"
+                    android:backgroundTint="@color/btn"
                     android:layout_height="match_parent"
                     android:drawableBottom="@drawable/ic_baseline_keyboard_arrow_right_24"/>
 
