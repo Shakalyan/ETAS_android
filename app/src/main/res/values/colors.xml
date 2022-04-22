@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="menu">#FFFFFFFF</color>
     <color name="btn">#FF004998</color>
+    <color name="selected">#FF489EFA</color>
 </resources>
