@@ -98,7 +98,7 @@ public class WordsFragment extends Fragment {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentDictionaryIsNull())
+                if(CurrentUserData.currentDictionaryIsNull(true, getContext()))
                     return;
 
                 Dictionary dictionary = CurrentUserData.getCurrentDictionary();
@@ -146,7 +146,7 @@ public class WordsFragment extends Fragment {
         deleteWordsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentDictionaryIsNull())
+                if(CurrentUserData.currentDictionaryIsNull(true, getContext()))
                     return;
 
                 ArrayList<Translation> translationsToDelete = new ArrayList<>();
@@ -199,18 +199,10 @@ public class WordsFragment extends Fragment {
     }
 
     private void updateShowWordsButtonText() {
-        if(currentDictionaryIsNull())
+        if(CurrentUserData.currentDictionaryIsNull(false, getContext()))
             return;
         String text = "Текущий словарь: " + CurrentUserData.getCurrentDictionary().getName();
         currentDictionaryTW.setText(text);
-    }
-
-    private boolean currentDictionaryIsNull() {
-        if(CurrentUserData.getCurrentDictionary() == null) {
-            Toast.makeText(getContext(), String.format("Chosen dictionary is null"), Toast.LENGTH_LONG).show();
-            return true;
-        }
-        return false;
     }
 
     private boolean selectedDictionaryIsNull() {

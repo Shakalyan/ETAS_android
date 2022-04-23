@@ -10,7 +10,7 @@
         android:id="@+id/testsFlipper"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,6 +34,15 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/view_text"
                 android:textAlignment="textStart"
+                android:minHeight="48dp" />
+
+            <Spinner
+                android:id="@+id/languages_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Язык"
+                android:textAlignment="textStart"
+                android:entries="@array/tests_languages"
                 android:minHeight="48dp" />
 
             <LinearLayout
@@ -71,19 +80,26 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/wordField"
+                android:id="@+id/ft_words_rest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Слов осталось: " />
+
+            <TextView
+                android:id="@+id/ft_word_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:width="300dp"
-                android:height="60dp"/>
+                android:height="60dp"
+                android:layout_marginTop="5dp" />
 
             <Button
                 android:id="@+id/variant1"
@@ -114,10 +130,10 @@
                 android:backgroundTint="@color/btn"/>
 
             <Button
-                android:id="@+id/exit_test"
+                android:id="@+id/test_finish_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/back"
+                android:text="@string/finish_test"
                 android:backgroundTint="@color/btn"/>
 
 
@@ -129,18 +145,27 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/st_words_rest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Слов осталось:" />
+
+            <TextView
+                android:id="@+id/st_word_field"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:textSize="20sp"
+                android:layout_marginTop="10dp"
                 android:textAlignment="center" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
                 <EditText
-                    android:id="@+id/editTextTextPersonName2"
+                    android:id="@+id/st_input_field"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -149,7 +174,7 @@
                     android:hint="@string/translate" />
 
                 <Button
-                    android:id="@+id/submitTranslationBtn"
+                    android:id="@+id/st_submit_button"
                     android:layout_width="wrap_content"
                     android:minWidth="5dp"
                     android:backgroundTint="@color/btn"
@@ -158,7 +183,55 @@
 
             </LinearLayout>
 
+            <Button
+                android:id="@+id/st_finish_button"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/finish_test" />
+
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Test finished!"
+                android:textSize="20dp"
+                android:textAlignment="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/test_correct_answers_tw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Correct answers: 10/20"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/test_exit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Выйти"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/btn" />
+
+        </LinearLayout>
+
+
 
     </ViewFlipper>
 
