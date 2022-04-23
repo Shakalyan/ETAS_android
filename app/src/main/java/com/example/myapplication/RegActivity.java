@@ -45,7 +45,17 @@ public class RegActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String new_login = new_user_name.getText().toString().trim();
+                if(new_login.isEmpty()) {
+                    Toast.makeText(RegActivity.this, "Введите логин", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 String new_password = new_user_password.getText().toString();
+                if(new_password.isEmpty()) {
+                    Toast.makeText(RegActivity.this, "Введите пароль", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 String dup_password = dup_user_password.getText().toString();
                 AccountService.register(new_login, new_password, dup_password);
 
@@ -60,7 +70,7 @@ public class RegActivity extends AppCompatActivity {
                     return;
                 }
 
-                Toast.makeText(RegActivity.this, "Registration successfully complete",
+                Toast.makeText(RegActivity.this, "Регистрация прошла успешно",
                         Toast.LENGTH_LONG).show();
                 
                 Intent intent = new Intent(RegActivity.this, MainActivity.class);

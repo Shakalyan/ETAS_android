@@ -109,6 +109,10 @@ public class TestsFragment extends Fragment {
             public void onClick(View view) {
                 if(CurrentUserData.currentDictionaryIsNull(true, getContext()))
                     return;
+                if(CurrentUserData.getCurrentDictionary().getTranslations().size() < 5) {
+                    Toast.makeText(getContext(), "В выбранном словаре меньше 5 слов", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if(wordsCountEt.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(), "Введите количество слов", Toast.LENGTH_LONG).show();
                     return;
@@ -241,6 +245,8 @@ public class TestsFragment extends Fragment {
 
         TestWindow currentTestWindow = CurrentTestData.getCurrentTestWindow();
         if(currentTestWindow.equals(TestWindow.START)) {
+            if(CurrentUserData.currentDictionaryIsNull(false, null))
+                return;
             String hint = "max: " + CurrentUserData.getCurrentDictionary().getTranslations().size();
             wordsCountEt.setHint(hint);
         }
@@ -309,7 +315,6 @@ public class TestsFragment extends Fragment {
                 variants.add((!CurrentTestData.isTestReversed())? variant.getSlValue() : variant.getFlValue());
                 Collections.swap(translationsCopy, variantIndex, wordsCount-- - 1);
             }
-            Log.i("VARIANTS",  variants.toString());
             CurrentTestData.setCurrentVariants(variants);
         }
     }

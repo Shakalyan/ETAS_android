@@ -54,7 +54,7 @@ public class TranslatedFragment extends Fragment {
                 String sentence = input_text.getText().toString();
                 String sourceLan = (CurrentUserData.isTranslationReversed())? "en" : "ru";
                 String targetLan = (!CurrentUserData.isTranslationReversed())? "en" : "ru";
-                TranslationService.translate(new User("asd", "asd"), sentence, sourceLan, targetLan);
+                TranslationService.translate(CurrentUserData.getUser(), sentence, sourceLan, targetLan);
                 while(!TranslationService.responseIsPresent()) {
                 }
 
@@ -105,6 +105,9 @@ public class TranslatedFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 CurrentUserData.setTranslationReversed(!CurrentUserData.isTranslationReversed());
+                String temp = input_text.getText().toString();
+                input_text.setText(translated_text.getText());
+                translated_text.setText(temp);
                 updateLanguages();
             }
         });

@@ -7,14 +7,16 @@ public class User {
     private Long id;
     private String login;
     private String password;
+    private String salt;
     private Set<Dictionary> dictionaries;
 
     public User() {
     }
 
-    public User(String login, String password) {
+    public User(String login, String password, String salt) {
         this.login = login;
         this.password = password;
+        this.salt = salt;
         this.id = (long)0;
     }
 
@@ -48,5 +50,13 @@ public class User {
 
     public void setDictionaries(Set<Dictionary> dictionaries) {
         this.dictionaries = dictionaries;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }

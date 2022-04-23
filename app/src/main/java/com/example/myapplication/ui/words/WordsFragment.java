@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.words;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,7 +71,7 @@ public class WordsFragment extends Fragment {
                 String name = etDictionaryName.getText().toString();
                 Dictionary dictionary = new Dictionary(name);
                 if(!DictionaryService.createDictionary(CurrentUserData.getUser(), dictionary)) {
-                    Toast.makeText(getContext(), "Incorrect dictionary name",
+                    Toast.makeText(getContext(), "Некорректное имя словаря",
                             Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -87,7 +88,7 @@ public class WordsFragment extends Fragment {
                 }
                 else {
                     dictionary.setId(Long.parseLong(response.getData()));
-                    Toast.makeText(getContext(), "Successfully created", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Словарь создан", Toast.LENGTH_LONG).show();
                 }
 
                 CurrentUserData.getUser().getDictionaries().add(dictionary);
@@ -114,6 +115,7 @@ public class WordsFragment extends Fragment {
                 }
 
                 CurrentUserData.getUser().getDictionaries().remove(dictionary);
+                CurrentUserData.setCurrentDictionary(null);
                 updateSpinner();
                 updateShowWordsButtonText();
             }
@@ -126,7 +128,7 @@ public class WordsFragment extends Fragment {
                     return;
                 Dictionary dictionary = getSelectedDictionary();
                 CurrentUserData.setCurrentDictionary(dictionary);
-                Toast.makeText(getContext(), String.format("Current dictionary is %s", dictionary.getName()), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), String.format("Выбран словарь %s", dictionary.getName()), Toast.LENGTH_LONG).show();
                 updateShowWordsButtonText();
             }
         });
@@ -159,7 +161,7 @@ public class WordsFragment extends Fragment {
                 if(!TranslationService.deleteTranslations(   CurrentUserData.getUser(),
                                                             translationsToDelete.toArray(new Translation[0]),
                                                             CurrentUserData.getCurrentDictionary().getId())) {
-                    Toast.makeText(getContext(), "Nothing chosen", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Ничего не выбрано", Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -173,7 +175,6 @@ public class WordsFragment extends Fragment {
                     return;
 
                 CurrentUserData.getCurrentDictionary().getTranslations().removeAll(translationsToDelete);
-                CurrentUserData.setCurrentDictionary(null);
                 updateShowWordsButtonText();
                 updateWordsList();
             }
@@ -199,8 +200,10 @@ public class WordsFragment extends Fragment {
     }
 
     private void updateShowWordsButtonText() {
-        if(CurrentUserData.currentDictionaryIsNull(false, getContext()))
+        if(CurrentUserData.currentDictionaryIsNull(false, getContext())) {
+            currentDictionaryTW.setText("Словарь не выбран");
             return;
+        }
         String text = "Текущий словарь: " + CurrentUserData.getCurrentDictionary().getName();
         currentDictionaryTW.setText(text);
     }
@@ -232,11 +235,26 @@ public class WordsFragment extends Fragment {
 
     private void updateSpinner() {
         ArrayList<String> dictsNames = new ArrayList<>();
-        for(Dictionary d : CurrentUserData.getUser().getDictionaries())
+
+        Dictionary chosenDictionary = CurrentUserData.getCurrentDictionary();
+        int chosenDictIndex = -1;
+        int counter = 0;
+        for(Dictionary d : CurrentUserData.getUser().getDictionaries()) {
             dictsNames.add(d.getName());
+            if(chosenDictionary != null) {
+                if(chosenDictionary == d) {
+                    chosenDictIndex = counter;
+                    chosenDictionary = null;
+                }
+                ++counter;
+            }
+        }
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, dictsNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dictionariesSpinner.setAdapter(adapter);
+        if(chosenDictIndex != -1)
+            dictionariesSpinner.setSelection(chosenDictIndex);
     }
 
     @Override
