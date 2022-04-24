@@ -43,41 +43,33 @@
             android:minHeight="48dp" />
 
         <Button
-            android:id="@+id/btn_save"
+            android:id="@+id/btn_create"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/save"
+            android:text="@string/create"
             android:backgroundTint="@color/btn"/>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_create"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/create"
-        android:layout_below="@+id/dictioinaries_spinner"
-        android:layout_marginStart="38dp"
-        android:backgroundTint="@color/btn"/>
-
-    <Button
         android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
         android:text="@string/delete"
         android:layout_below="@+id/dictioinaries_spinner"
         android:layout_toEndOf="@+id/btn_choice"
+        android:layout_marginLeft="103dp"
+
         android:backgroundTint="@color/btn"/>
 
     <Button
         android:id="@+id/btn_choice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
+        android:layout_marginStart="38dp"
         android:text="@string/choice"
         android:layout_below="@+id/dictioinaries_spinner"
-        android:layout_toEndOf="@+id/btn_create"
+
         android:backgroundTint="@color/btn"/>
 
     <Spinner
